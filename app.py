@@ -88,7 +88,8 @@ def disminuir_producto(nombre):
 def resetear_cantidades():
     for key in list(st.session_state.keys()):
         if key.startswith("qty_"):
-            st.session_state[key] = 1
+            del st.session_state[key]
+
 
 
 
