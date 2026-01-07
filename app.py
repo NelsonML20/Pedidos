@@ -85,6 +85,12 @@ def disminuir_producto(nombre):
         else:
             del st.session_state.ticket[nombre]
 
+def resetear_cantidades():
+    for key in list(st.session_state.keys()):
+        if key.startswith("qty_"):
+            st.session_state[key] = 1
+
+
 
 # -------------------------
 # CARGAR PRODUCTOS
@@ -215,10 +221,12 @@ with col2:
 
             st.success("Pedido guardado correctamente")
 
-            # LIMPIAR TODO
+            # LIMPIARTODO
             st.session_state.ticket = {}
             st.session_state.pedido_en_edicion = None
             st.session_state.nombre_cliente = ""
+
+            resetear_cantidades()
 
             st.rerun()
 
